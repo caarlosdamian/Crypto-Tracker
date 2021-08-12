@@ -6,7 +6,6 @@ const CoinList = () => {
   const [coins, setCoins] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { watchList,deleteCoin } = useContext(WatchListContext);
-  console.log(watchList);
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
