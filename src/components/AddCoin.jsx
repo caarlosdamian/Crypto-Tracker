@@ -23,7 +23,6 @@ const AddCoin = () => {
 
   const handleClick = (coin) => {
     setIsActive(false);
-    console.log(coins)
     addCoin(coin);
   };
   return (

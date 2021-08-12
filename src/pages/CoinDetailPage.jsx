@@ -52,7 +52,6 @@ const CoinDetailPage = () => {
         detail: detail.data[0],
       });
     };
-    console.log(data);
 
     fetchData();
   }, []);
