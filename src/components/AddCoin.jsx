@@ -20,7 +20,6 @@ const AddCoin = () => {
     } else setCoins([]);
   }, [watchList]);
 
-
   const handleClick = (coin) => {
     setIsActive(false);
     addCoin(coin);
