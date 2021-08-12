@@ -12,6 +12,7 @@ const App = () => {
         <Router>
           <Header />
           <Route exact path="/" component={CoinSummaryPage} />
+          <Route exact path="/coins/:id" component={CoinDetailPage} />
         </Router>
       </WatchListContextProvider>
     </div>
