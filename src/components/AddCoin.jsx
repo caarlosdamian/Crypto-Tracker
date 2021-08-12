@@ -3,9 +3,10 @@ import coinData from "../apis/coinGecko";
 import { WatchListContext } from "../context/watchListContext";
 
 const AddCoin = () => {
-  const { watchList, addCoin } = useContext(WatchListContext);
-  const [coins, setCoins] = useState([]);
   const [isActive, setIsActive] = useState(false);
+  const { watchList,addCoin } = useContext(WatchListContext);
+  const [availableCoins, setAvailableCoins] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const { data } = await coinData.get("/coins/markets/", {
@@ -13,17 +14,18 @@ const AddCoin = () => {
           vs_currency: "mxn",
         },
       });
-      setCoins(data);
+      setAvailableCoins(data);
     };
     if (watchList.length > 0) {
       fetchData();
-    } else setCoins([]);
+    } else setAvailableCoins([]);
   }, [watchList]);
 
   const handleClick = (coin) => {
-    setIsActive(false);
     addCoin(coin);
+    setIsActive(false);
   };
+
   return (
     <div className="dropdown">
       <button
@@ -33,17 +35,10 @@ const AddCoin = () => {
       >
         Add Coin
       </button>
-      <div
-        className={
-          isActive
-            ? "dropdown-menu dataResult show"
-            : "dataResult dropdown-menu"
-        }
-      >
-        {coins.map((el) => {
+      <div className={isActive ? "dropdown-menu dataResult show" : "dropdown-menu dataResult"}>
+        {availableCoins.map((el) => {
           return (
             <a
-              key={el.id}
               onClick={() => handleClick(el.id)}
               href="#"
               className="dropdown-item"

@@ -48,6 +48,7 @@ const CoinData = ({ data }) => {
       );
     }
   };
+
   return <div>{renderData()}</div>;
 };
 

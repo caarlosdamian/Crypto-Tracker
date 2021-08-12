@@ -39,7 +39,6 @@ ul {
 .coin:hover .delete-icon {
   display: block;
 }
-
 .dataResult::-webkit-scrollbar {
   display: none;
 }
