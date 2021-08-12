@@ -45,7 +45,6 @@ const CoinDetailPage = () => {
         }),
         setIsLoading(false),
       ]);
-      console.log(data.prices);
       setData({
         day: formatData(day.data.prices),
         week: formatData(week.data.prices),
@@ -53,6 +52,8 @@ const CoinDetailPage = () => {
         detail: detail.data[0],
       });
     };
+    console.log(data);
+
     fetchData();
   }, []);
   const renderData = () => {
@@ -61,8 +62,8 @@ const CoinDetailPage = () => {
     }
     return (
       <div className="coinlist">
-        <HistoryChart />
-        <CoinData />
+        <HistoryChart data={data}/>
+        <CoinData data={data.detail} />
       </div>
     );
   };
